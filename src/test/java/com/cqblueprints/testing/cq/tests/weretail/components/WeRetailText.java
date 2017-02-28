@@ -1,0 +1,69 @@
+package com.cqblueprints.testing.cq.tests.weretail.components;
+
+
+import com.cqblueprints.testing.cq.factory.FactoryProducer;
+import com.cqblueprints.testing.cq.pageobjects.AuthorPage;
+import com.cqblueprints.testing.cq.pageobjects.PublishPage;
+import com.cqblueprints.testing.cq.tests.components.general.RetailBaseTest;
+import org.junit.Test;
+import org.openqa.selenium.By;
+
+public class WeRetailText extends RetailBaseTest {
+	public static final String COMPONENT_NAME = "Text";
+	public static final String COMPONENT_CRX_NAME = "text";
+
+	@Test
+	public void placeComponent() throws Exception {
+		AuthorPage authorPage = FactoryProducer.getPageFactory().getAuthorPage(driver, wait, environment.getVersion());
+		authorPage.toggleSidePanel();
+		authorPage.selectSidePanelTab(COMPONENTS_TAB_NAME);
+		authorPage.dragComponentIntoParsys(COMPONENT_NAME, TARGET_PARSYS);
+	}
+
+	@Test
+	public void testText() throws Exception {
+		placeComponent();
+		String inputText = "Text For Input";
+
+		AuthorPage authorPage = FactoryProducer.getPageFactory().getAuthorPage(driver, wait, environment.getVersion());
+		authorPage.editComponent(COMPONENT_CRX_NAME);
+		authorPage.switchToDefaultContent();
+		authorPage.switchToContent();
+		authorPage.selectInlineEditor(inputText);
+		authorPage.switchToDefaultContent();
+		authorPage.closeInlineEditor();
+		authorPage.switchToContent();
+		authorPage.assertExists(By.xpath("//p[text()='"+inputText+"']"));
+	}
+
+	@Test
+	public void testPublishValues() throws Exception {
+		String inputText = "Text For Input";
+
+		placeComponent();
+
+		AuthorPage authorPage = FactoryProducer.getPageFactory().getAuthorPage(driver, wait, environment.getVersion());
+		authorPage.editComponent(COMPONENT_CRX_NAME);
+		authorPage.switchToDefaultContent();
+		authorPage.switchToContent();
+		authorPage.selectInlineEditor(inputText);
+		authorPage.switchToDefaultContent();
+		authorPage.closeInlineEditor();
+		authorPage.switchToContent();
+
+		PublishPage publishPage = FactoryProducer.getPageFactory().getPublishPage(driver, environment.getPublishUrl()+TEST_PAGE, environment.getVersion());
+		try {
+			publishPage.assertExists(By.xpath("//p[text()='"+inputText+"']"));
+		} finally {
+			publishPage.closeDriver();
+		}
+		authorPage.deactivatePage(TEST_PAGE, environment);
+	}
+
+	@Test
+	public void deleteComponent() throws Exception {
+		placeComponent();
+		AuthorPage authorPage = FactoryProducer.getPageFactory().getAuthorPage(driver, wait, environment.getVersion());
+		authorPage.deleteComponent(COMPONENT_CRX_NAME);
+	}
+}
