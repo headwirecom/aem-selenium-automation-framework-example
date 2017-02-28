@@ -4,7 +4,7 @@
 	<groupId>com.cqblueprints.testing</groupId>
 	<artifactId>cq-framework</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Test Framework</name>
+	<name>Test Framework Example Tests</name>
 	<description>Framework for automated functional testing of Adobe CQ 5.6</description>
 	<dependencies>
 		<dependency>
