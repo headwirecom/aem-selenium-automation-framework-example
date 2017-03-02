@@ -1,15 +1,14 @@
 package com.cqblueprints.testing.cq.tests.siteadmin;
 
-import static com.cqblueprints.testing.cq.base.BaseActions.ACTIONS;
-
-import java.io.IOException;
-
+import com.cqblueprints.testing.cq.base.DefaultSiteAdminBase;
 import com.cqblueprints.testing.cq.factory.FactoryProducer;
+import com.cqblueprints.testing.cq.pageobjects.PublishPage;
 import org.apache.http.client.ClientProtocolException;
 import org.junit.Test;
 
-import com.cqblueprints.testing.cq.base.DefaultSiteAdminBase;
-import com.cqblueprints.testing.cq.pageobjects.PublishPage;
+import java.io.IOException;
+
+import static com.cqblueprints.testing.cq.base.BaseActions.ACTIONS;
 
 
 public class PageCreateEditDeleteTest extends DefaultSiteAdminBase {
@@ -44,7 +43,7 @@ public class PageCreateEditDeleteTest extends DefaultSiteAdminBase {
 		siteAdminPage.clickSiteAdminButton(selectOptionTitle, selectOptionTitleFallback);
 		siteAdminPage.clickSiteAdminPage(pageXpath);
 		siteAdminPage.activatePage();
-		PublishPage publishPage = FactoryProducer.getPageFactory().getPublishPage(environment.getPublishUrl()+TEST_PAGE, environment.getVersion());
+		PublishPage publishPage = FactoryProducer.getPageFactory().getPublishPage(driver, environment.getPublishUrl()+TEST_PAGE, environment.getVersion());
 		publishPage.isNot404(TEST_PAGE_NAME);
 		publishPage.closeDriver();
 	}
@@ -56,7 +55,7 @@ public class PageCreateEditDeleteTest extends DefaultSiteAdminBase {
 		siteAdminPage.activatePage();
 		siteAdminPage.clickSiteAdminPage(pageXpath);
 		siteAdminPage.deactivatePage();
-		PublishPage publishPage = FactoryProducer.getPageFactory().getPublishPage(environment.getPublishUrl()+TEST_PAGE, environment.getVersion());
+		PublishPage publishPage = FactoryProducer.getPageFactory().getPublishPage(driver,environment.getPublishUrl()+TEST_PAGE, environment.getVersion());
 		publishPage.is404(newPageName);
 		publishPage.closeDriver();
 	}

@@ -23,7 +23,7 @@ public class RequestActivationWorkflowTest extends DefaultWorkflowBase {
 			AuthorPage dscPageSecondStep = dscPageNotStarted.startWorkflowFromSidekick(REQUEST_ACTIVATION_WORKFLOW);
 			dscPageSecondStep.advanceWorkflowFromSidekick("Ready for activate. Ready for activate.");
 			dscPageSecondStep.advanceWorkflowFromSidekick("Approved.");
-			PublishPage publishPage = FactoryProducer.getPageFactory().getPublishPage(environment.getPublishUrl()+TEST_PAGE, environment.getVersion());
+			PublishPage publishPage = FactoryProducer.getPageFactory().getPublishPage(driver, environment.getPublishUrl()+TEST_PAGE, environment.getVersion());
 			publishPage.isNot404(TEST_PAGE_NAME);
 			publishPage.closeDriver();
 		}
@@ -44,7 +44,7 @@ public class RequestActivationWorkflowTest extends DefaultWorkflowBase {
 			inboxPage.validateComment(WORKFLOW_COMMENT);
 			inboxPage.advanceWorkflowThroughInbox(TEST_PAGE_NAME, WORKFLOW_COMMENT);
 			Thread.sleep(5000); // wait for activation
-			PublishPage publishPage = FactoryProducer.getPageFactory().getPublishPage(environment.getPublishUrl()+TEST_PAGE, environment.getVersion());
+			PublishPage publishPage = FactoryProducer.getPageFactory().getPublishPage(driver, environment.getPublishUrl()+TEST_PAGE, environment.getVersion());
 			publishPage.isNot404(TEST_PAGE_NAME);
 			publishPage.closeDriver();
 		}
