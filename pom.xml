@@ -15,7 +15,7 @@
 		<dependency>
 			<groupId>com.cqblueprints.testing</groupId>
 			<artifactId>test-framework</artifactId>
-			<version>0.5.0.4</version>
+			<version>0.6.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
