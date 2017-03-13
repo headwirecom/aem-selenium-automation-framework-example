@@ -35,7 +35,7 @@ public class GeneralSlideshowTest extends DefaultComponentBase {
 		testSlideshow();
 		AuthorPage authorPage = FactoryProducer.getPageFactory().getAuthorPage(driver, wait, environment.getVersion());
 		authorPage.activatePage(TEST_PAGE, environment);
-		PublishPage publishPage = FactoryProducer.getPageFactory().getPublishPage(environment.getPublishUrl()+TEST_PAGE, environment.getVersion());
+		PublishPage publishPage = FactoryProducer.getPageFactory().getPublishPage(driver, environment.getPublishUrl()+TEST_PAGE, environment.getVersion());
 		try {
 			publishPage.checkWidthAndHeightOfComponent(COMPONENT_CRX_NAME, "700px", "303px");
 		} finally {

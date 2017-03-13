@@ -27,7 +27,7 @@ public class GeneralTableTest extends DefaultComponentBase {
 		authorPage.switchToRTEIframe();
 		authorPage.typeInRTETable("Test Text", 1, 3);
 		authorPage.typeInRTETable("Test Text", 2, 2);
-		authorPage.confirmDialogOld();
+		authorPage.confirmDialog();
 	}
 	
 	@Test

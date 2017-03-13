@@ -40,7 +40,7 @@ public class GeneralTitleTest extends RetailBaseTest {
 		testTitle();
 		AuthorPage authorPage = FactoryProducer.getPageFactory().getAuthorPage(driver, wait, environment.getVersion());
 		authorPage.activatePage(TEST_PAGE, environment);
-		PublishPage publishPage = FactoryProducer.getPageFactory().getPublishPage(environment.getPublishUrl()+TEST_PAGE, environment.getVersion());
+		PublishPage publishPage = FactoryProducer.getPageFactory().getPublishPage(driver, environment.getPublishUrl()+TEST_PAGE, environment.getVersion());
 		try {
 			publishPage.assertText(TITLE_BY, NEW_TITLE);
 		} finally {

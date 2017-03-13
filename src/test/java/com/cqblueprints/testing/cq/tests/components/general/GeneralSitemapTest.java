@@ -39,7 +39,7 @@ public class GeneralSitemapTest extends DefaultComponentBase {
 		testSitemap();
 		AuthorPage authorPage = FactoryProducer.getPageFactory().getAuthorPage(driver, wait, environment.getVersion());
 		authorPage.activatePage(TEST_PAGE, environment);
-		PublishPage publishPage = FactoryProducer.getPageFactory().getPublishPage(environment.getPublishUrl()+TEST_PAGE, environment.getVersion());
+		PublishPage publishPage = FactoryProducer.getPageFactory().getPublishPage(driver, environment.getPublishUrl()+TEST_PAGE, environment.getVersion());
 		try {
 			for (String link : ROOTED_SITEMAP_LINKS) {
 				publishPage.assertLinkText(link);

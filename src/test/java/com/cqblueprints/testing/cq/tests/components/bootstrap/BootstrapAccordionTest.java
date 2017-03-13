@@ -46,7 +46,7 @@ public class BootstrapAccordionTest extends DefaultBootstrapComponentBase {
 		editComponent();
 		AuthorPage authorPage = FactoryProducer.getPageFactory().getAuthorPage(driver, wait, environment.getVersion());
 		authorPage.activatePage(TEST_PAGE, environment);
-		PublishPage publishPage = FactoryProducer.getPageFactory().getPublishPage(environment.getPublishUrl()+TEST_PAGE, environment.getVersion());
+		PublishPage publishPage = FactoryProducer.getPageFactory().getPublishPage(driver, environment.getPublishUrl()+TEST_PAGE, environment.getVersion());
 		publishPage.assertExists(By.xpath("//h4[@class='panel-title]"));
 		publishPage.closeDriver();
 		authorPage.deactivatePage(TEST_PAGE, environment);

@@ -51,7 +51,7 @@ public class BootstrapImageTest extends DefaultBootstrapComponentBase {
 		testImageComponentMetaData();
 		AuthorPage authorPage = FactoryProducer.getPageFactory().getAuthorPage(driver, wait, environment.getVersion());
 		authorPage.activatePage(TEST_PAGE, environment);
-		PublishPage publishPage = FactoryProducer.getPageFactory().getPublishPage(environment.getPublishUrl()+TEST_PAGE, environment.getVersion());
+		PublishPage publishPage = FactoryProducer.getPageFactory().getPublishPage(driver, environment.getPublishUrl()+TEST_PAGE, environment.getVersion());
 		publishPage.assertExists(By.xpath("//div[@class='cq-dd-image']/img[@src='"+ASSET_PATH+"']"));
 		publishPage.closeDriver();
 		authorPage.deactivatePage(TEST_PAGE, environment);

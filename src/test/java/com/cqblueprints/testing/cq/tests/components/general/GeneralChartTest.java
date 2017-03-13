@@ -37,7 +37,7 @@ public class GeneralChartTest extends DefaultComponentBase {
 		authorPage.fillInDialogFieldByName(CHART_DATA_FIELD_NAME, CHART_DATA);
 		authorPage.selectDialogTabX("Advanced");
 		authorPage.selectDropDownValue("Bar Chart");
-		authorPage.confirmDialogOld();
+		authorPage.confirmDialog();
 		authorPage.switchToDefaultContent();
 		authorPage.switchToContent();
 		authorPage.assertExists(By.xpath(tableXpath));
@@ -56,7 +56,7 @@ public class GeneralChartTest extends DefaultComponentBase {
 		testChart();
 		AuthorPage authorPage = FactoryProducer.getPageFactory().getAuthorPage(driver, wait, environment.getVersion());
 		authorPage.activatePage(TEST_PAGE, environment);
-		PublishPage publishPage = FactoryProducer.getPageFactory().getPublishPage(environment.getPublishUrl()+TEST_PAGE, environment.getVersion());
+		PublishPage publishPage = FactoryProducer.getPageFactory().getPublishPage(driver, environment.getPublishUrl()+TEST_PAGE, environment.getVersion());
 		try {
 			publishPage.assertExists(By.xpath(tableXpath));
 		} finally {

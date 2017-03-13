@@ -31,7 +31,7 @@ public class BootstrapHeaderTest extends DefaultBootstrapComponentBase {
 		testHeader();
 		AuthorPage authorPage = FactoryProducer.getPageFactory().getAuthorPage(driver, wait, environment.getVersion());
 		authorPage.activatePage(TEST_PAGE, environment);
-		PublishPage publishPage = FactoryProducer.getPageFactory().getPublishPage(environment.getPublishUrl()+TEST_PAGE, environment.getVersion());
+		PublishPage publishPage = FactoryProducer.getPageFactory().getPublishPage(driver, environment.getPublishUrl()+TEST_PAGE, environment.getVersion());
 		publishPage.assertExists(HEADER_BY);
 		publishPage.closeDriver();
 		authorPage.deactivatePage(TEST_PAGE, environment);

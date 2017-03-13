@@ -39,7 +39,7 @@ public class BootstrapTextTest extends DefaultComponentBase {
 		testText();
 		AuthorPage authorPage = FactoryProducer.getPageFactory().getAuthorPage(driver, wait, environment.getVersion());
 		authorPage.activatePage(TEST_PAGE, environment);
-		PublishPage publishPage = FactoryProducer.getPageFactory().getPublishPage(environment.getPublishUrl()+TEST_PAGE, environment.getVersion());
+		PublishPage publishPage = FactoryProducer.getPageFactory().getPublishPage(driver, environment.getPublishUrl()+TEST_PAGE, environment.getVersion());
 		publishPage.assertExists(By.xpath("//p[text()='"+TEXT_INPUT+"']"));
 		publishPage.closeDriver();
 		authorPage.deactivatePage(TEST_PAGE, environment);

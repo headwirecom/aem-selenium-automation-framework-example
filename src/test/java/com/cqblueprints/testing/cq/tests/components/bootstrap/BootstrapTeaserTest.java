@@ -72,7 +72,7 @@ public class BootstrapTeaserTest extends DefaultBootstrapComponentBase {
 		testThreeAcross();
 		AuthorPage authorPage = FactoryProducer.getPageFactory().getAuthorPage(driver, wait, environment.getVersion());
 		authorPage.activatePage(TEST_PAGE, environment);
-		PublishPage publishPage = FactoryProducer.getPageFactory().getPublishPage(environment.getPublishUrl()+TEST_PAGE, environment.getVersion());
+		PublishPage publishPage = FactoryProducer.getPageFactory().getPublishPage(driver, environment.getPublishUrl()+TEST_PAGE, environment.getVersion());
 		authorPage.assertExists(By.xpath("//div[@class='caption']/h3[text()='English']"));
 		authorPage.assertLinkText("View More");
 		publishPage.closeDriver();

@@ -43,7 +43,7 @@ public class BootstrapCarouselTest extends DefaultBootstrapComponentBase {
 		editComponent();
 		AuthorPage authorPage = FactoryProducer.getPageFactory().getAuthorPage(driver, wait, environment.getVersion());
 		authorPage.activatePage(TEST_PAGE, environment);
-		PublishPage publishPage = FactoryProducer.getPageFactory().getPublishPage(environment.getPublishUrl()+TEST_PAGE, environment.getVersion());
+		PublishPage publishPage = FactoryProducer.getPageFactory().getPublishPage(driver, environment.getPublishUrl()+TEST_PAGE, environment.getVersion());
 		publishPage.assertExists(By.xpath("//div[@class='item active']/img[@src='"+CAROUSEL_IMAGE_OVERRIDE[0]+"']"));
 		publishPage.assertExists(By.xpath("//div[@class='item']/img[@src='"+CAROUSEL_IMAGE_OVERRIDE[1]+"']"));
 		publishPage.assertExists(By.xpath("//div[@class='carousel-caption']/h3[text()='"+IMAGE_TITLE[0]+"']"));

@@ -57,7 +57,7 @@ public class GeneralImageTest extends DefaultComponentBase {
 		testImageComponentMetaData();
 		AuthorPage authorPage = FactoryProducer.getPageFactory().getAuthorPage(driver, wait, environment.getVersion());
 		authorPage.activatePage(TEST_PAGE, environment);
-		PublishPage publishPage = FactoryProducer.getPageFactory().getPublishPage(environment.getPublishUrl()+TEST_PAGE, environment.getVersion());
+		PublishPage publishPage = FactoryProducer.getPageFactory().getPublishPage(driver, environment.getPublishUrl()+TEST_PAGE, environment.getVersion());
 		try {
 			publishPage.validateImageAttribute("title", IMAGE_TITLE);
 			publishPage.validateImageAttribute("alt", IMAGE_ALT_TITLE);

@@ -52,7 +52,7 @@ public class BootstrapTabsTest extends DefaultBootstrapComponentBase {
 		testTabs();
 		AuthorPage authorPage = FactoryProducer.getPageFactory().getAuthorPage(driver, wait, environment.getVersion());
 		authorPage.activatePage(TEST_PAGE, environment);
-		PublishPage publishPage = FactoryProducer.getPageFactory().getPublishPage(environment.getPublishUrl()+TEST_PAGE, environment.getVersion());
+		PublishPage publishPage = FactoryProducer.getPageFactory().getPublishPage(driver, environment.getPublishUrl()+TEST_PAGE, environment.getVersion());
 		for (int i=1; i<=NUMBER_OF_TABS;i++) {
 			publishPage.assertLinkText(TAB_PREFIX+i);
 		}

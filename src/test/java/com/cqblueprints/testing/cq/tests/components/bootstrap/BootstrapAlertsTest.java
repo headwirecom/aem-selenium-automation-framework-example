@@ -56,7 +56,7 @@ public class BootstrapAlertsTest extends DefaultBootstrapComponentBase {
 		testAlert();
 		AuthorPage authorPage = FactoryProducer.getPageFactory().getAuthorPage(driver, wait, environment.getVersion());
 		authorPage.activatePage(TEST_PAGE, environment);
-		PublishPage publishPage = FactoryProducer.getPageFactory().getPublishPage(environment.getPublishUrl()+TEST_PAGE, environment.getVersion());
+		PublishPage publishPage = FactoryProducer.getPageFactory().getPublishPage(driver, environment.getPublishUrl()+TEST_PAGE, environment.getVersion());
 		authorPage.assertExists(By.xpath("//div[contains(@class,'alert')]/p[text()='"+TEST_INPUT+"']"));
 		authorPage.assertExists(By.className("close"));
 		publishPage.closeDriver();
